@@ -1,0 +1,18 @@
+databaseChangeLog:
+    # Aufgabe 5
+    - changeSet:
+          preConditions:
+              - onFail: WARN
+              - sqlCheck:
+                    expectedResult: 0
+                    sql: select count(*) from DATABASECHANGELOGLOCK
+          id: 7
+          author: Joey Rüegg
+          changes:
+              - createIndex:
+                    indexName: title_index
+                    tableName: articles
+                    columns:
+                        - column:
+                              descending: true
+                              name: title

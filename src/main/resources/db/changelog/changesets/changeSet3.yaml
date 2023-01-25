@@ -1,0 +1,11 @@
+databaseChangeLog:
+    # Aufgabe 1
+    - changeSet:
+          author: Joey Rüegg
+          id: 3
+          changes:
+              - modifyDataType:
+                    columnName: text
+                    newDataType: TEXT
+                    schemaName: public
+                    tableName: article

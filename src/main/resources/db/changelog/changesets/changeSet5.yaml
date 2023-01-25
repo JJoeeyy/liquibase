@@ -1,0 +1,15 @@
+databaseChangeLog:
+  # Aufgabe 3
+  - changeSet:
+      id: 5
+      author: Joey Rüegg
+      changes:
+        - addColumn:
+            tableName: articles
+            columns:
+              - column:
+                  name: version
+                  type: INT
+              - column:
+                  name: created
+                  type: TIMESTAMP

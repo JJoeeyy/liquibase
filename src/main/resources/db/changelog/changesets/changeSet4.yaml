@@ -1,0 +1,10 @@
+databaseChangeLog:
+    # Aufgabe 2
+    - changeSet:
+          author: Joey Rüegg
+          id: 4
+          changes:
+              - renameTable:
+                    newTableName: articles
+                    oldTableName: article
+                    schemaName: public

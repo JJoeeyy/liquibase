@@ -1,0 +1,6 @@
+databaseChangeLog:
+    # empty
+    - changeSet:
+          author: Joey Rüegg
+          id: 2
+          changes: [ ]

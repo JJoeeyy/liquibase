@@ -1,0 +1,24 @@
+databaseChangeLog:
+  # Aufgabe 4
+  - changeSet:
+      author: Joey Rüegg
+      id: 6
+      changes:
+        - createTable:
+            tableName: comment
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: article_id
+                  type: UUID
+            foreignKeys:
+              - foreignKey:
+                  foreignTableName: articles
+                  foreignColumnNames: id
+                  onDelete: CASCADE
+                  onUpdate: CASCADE
+                  columnNames: article_id
