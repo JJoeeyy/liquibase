@@ -1,10 +1,22 @@
 databaseChangeLog:
-    # Aufgabe 2
-    - changeSet:
-          author: Joey Rüegg
-          id: 4
-          changes:
-              - renameTable:
-                    newTableName: articles
-                    oldTableName: article
-                    schemaName: public
+  # Aufgabe 3
+  - changeSet:
+      id: 4
+      author: Joey Rüegg
+      changes:
+        - addColumn:
+            tableName: articles
+            columns:
+              - column:
+                  name: version
+                  type: INT
+              - column:
+                  name: created
+                  type: TIMESTAMP
+      rollback:
+        - dropColumn:
+            tableName: articles
+            columnName: version
+        - dropColumn:
+            tableName: articles
+            columnName: created

@@ -1,6 +1,17 @@
 databaseChangeLog:
-    # empty
+    # Aufgabe 1
     - changeSet:
           author: Joey Rüegg
           id: 2
-          changes: [ ]
+          changes:
+              - modifyDataType:
+                    columnName: text
+                    newDataType: TEXT
+                    schemaName: public
+                    tableName: article
+          rollback:
+            - modifyDataType:
+                columnName: text
+                newDataType: VARCHAR
+                schemaName: public
+                tableName: article

@@ -1,15 +1,27 @@
 databaseChangeLog:
-  # Aufgabe 3
+  # Aufgabe 4
   - changeSet:
-      id: 5
       author: Joey Rüegg
+      id: 5
       changes:
-        - addColumn:
-            tableName: articles
+        - createTable:
+            tableName: comment
             columns:
               - column:
-                  name: version
+                  name: id
                   type: INT
+                  constraints:
+                    primaryKey: true
               - column:
-                  name: created
-                  type: TIMESTAMP
+                  name: article_id
+                  type: UUID
+            foreignKeys:
+              - foreignKey:
+                  foreignTableName: articles
+                  foreignColumnNames: id
+                  onDelete: CASCADE
+                  onUpdate: CASCADE
+                  columnNames: article_id
+      rollback:
+        - dropTable:
+            tableName: comment

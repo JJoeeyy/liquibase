@@ -1,24 +1,22 @@
 databaseChangeLog:
-  # Aufgabe 4
-  - changeSet:
-      author: Joey Rüegg
-      id: 6
-      changes:
-        - createTable:
-            tableName: comment
-            columns:
-              - column:
-                  name: id
-                  type: INT
-                  constraints:
-                    primaryKey: true
-              - column:
-                  name: article_id
-                  type: UUID
-            foreignKeys:
-              - foreignKey:
-                  foreignTableName: articles
-                  foreignColumnNames: id
-                  onDelete: CASCADE
-                  onUpdate: CASCADE
-                  columnNames: article_id
+    # Aufgabe 5
+    - changeSet:
+          preConditions:
+              - onFail: WARN
+              - sqlCheck:
+                    expectedResult: 0
+                    sql: select count(*) from DATABASECHANGELOGLOCK
+          id: 6
+          author: Joey Rüegg
+          changes:
+              - createIndex:
+                    indexName: title_index
+                    tableName: articles
+                    columns:
+                        - column:
+                              descending: true
+                              name: title
+          rollback:
+            - dropIndex:
+                indexName: title_index
+                tableName: articles
